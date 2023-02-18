@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "web-ext run -s ./ext --firefox='/Applications/Firefox Nightly.app/Contents/MacOS/firefox' --devtools --start-url https://github.com/falcucci/github-board-refined/projects/1",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/falcucci/github-autoissue/issues"
   },
-  "homepage": "https://github.com/falcucci/github-autoissue#readme"
+  "homepage": "https://github.com/falcucci/github-autoissue#readme",
+  "dependencies": {
+    "web-ext": "^7.5.0"
+  }
 }
