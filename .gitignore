@@ -1,0 +1,9 @@
+node_modules
+distribution
+test/web-ext-profile
+!test/web-ext-profile/.gitkeep
+.cache
+.parcel-cache
+artifacts
+
+LocalOverrides.xcconfig

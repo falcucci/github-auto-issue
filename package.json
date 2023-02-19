@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "web-ext run -s ./ext --firefox='/Applications/Firefox Nightly.app/Contents/MacOS/firefox' --devtools --start-url https://github.com/falcucci/github-board-refined/projects/1",
+    "build": "webpack --watch --progress --mode=production",
+    "start": "web-ext run -s ./ext --firefox='/Applications/Firefox Nightly.app/Contents/MacOS/firefox' --start-url https://github.com/falcucci/github-board-refined/projects/1",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,6 +19,15 @@
   },
   "homepage": "https://github.com/falcucci/github-autoissue#readme",
   "dependencies": {
-    "web-ext": "^7.5.0"
+    "web-ext": "^7.5.0",
+    "webext-domain-permission-toggle": "^3.0.0",
+    "webext-dynamic-content-scripts": "^9.2.0",
+    "webext-options-sync": "^4.0.1"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^11.0.0",
+    "terser-webpack-plugin": "^5.3.6",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
   }
 }
