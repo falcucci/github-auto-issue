@@ -12,15 +12,10 @@
   "content_scripts": [{
     "run_at": "document_start",
     "matches": [
-      "https://github.com/*/projects/*"
+      "https://github.com/users/*/projects/*"
     ],
     "js": [
       "content.js"
-    ],
-    "css": [
-      "css/window.css",
-      "css/options.css",
-      "css/content.css"
     ]
   }],
   "background": {

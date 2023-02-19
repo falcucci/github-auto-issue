@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --watch --progress --mode=production",
-    "start": "web-ext run -s ./distribution --firefox='/Applications/Firefox Nightly.app/Contents/MacOS/firefox' --start-url https://github.com/users/falcucci/projects/5 --verbose",
+    "start": "web-ext run -s ./distribution/ --firefox='/Applications/Firefox Nightly.app/Contents/MacOS/firefox' --start-url https://github.com/users/falcucci/projects/5 --verbose",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
