@@ -1,6 +1,8 @@
 import OptionsSync from 'webext-options-sync'
 import _ from 'lodash'
 
+
+console.log('options.js')
 new OptionsSync().syncForm('#options-form');
 
 const chromeVersion = /Chrome\/([0-9.]+)/.exec(navigator.userAgent)[1];

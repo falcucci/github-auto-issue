@@ -19,7 +19,7 @@ module.exports = {
     // This transpiles all code (except for third party modules) using Babel.
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.jsx?$/,
         loader: "esbuild-loader",
         options: {
           loader: "jsx",
@@ -29,6 +29,9 @@ module.exports = {
     ],
   },
   resolve: {
+    alias: {
+      react: "dom-chef",
+    },
     // This allows you to import modules just like you would in a NodeJS app.
     extensions: [".js", ".jsx"],
     modules: ["src", "node_modules"],
@@ -36,6 +39,9 @@ module.exports = {
   plugins: [
     new webpack.ProvidePlugin({
       browser: "webextension-polyfill",
+    }),
+    new CopyWebpackPlugin({
+      patterns: ["*.+(html|json|png)"],
     }),
   ],
   optimization: {

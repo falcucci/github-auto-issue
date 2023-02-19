@@ -6,13 +6,10 @@ addDomainPermissionToggle();
 console.log('background.js loaded');
 
 /* Define defaults */
-new OptionsSync().define({
-	defaults: {
-		personalToken: '',
-		logging: false
-	},
-});
-
-
-// GitHub Enterprise support
-dynamicContentScripts.addToFutureTabs();
+// new OptionsSync().define({
+// 	defaults: {
+// 		personalToken: '',
+// 		logging: false
+// 	},
+// });
+//

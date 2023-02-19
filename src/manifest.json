@@ -6,6 +6,7 @@
     }
   },
   "manifest_version": 2,
+  "minimum_chrome_version": "105",
   "name": "github-autoissue",
   "version": "0.0.0",
   "content_scripts": [{
@@ -14,8 +15,7 @@
       "https://github.com/*/projects/*"
     ],
     "js": [
-      "dist/browser-polyfill.min.js",
-      "dist/content.js"
+      "content.js"
     ],
     "css": [
       "css/window.css",
@@ -26,8 +26,7 @@
   "background": {
     "persistent": false,
     "scripts": [
-      "dist/background.js",
-      "dist/browser-polyfill.min.js"
+      "background.js"
     ]
   },
   "browser_action": {
@@ -39,16 +38,20 @@
     "default_popup": "options.html"
   },
   "options_ui": {
-    "chrome_style": false,
+    "chrome_style": true,
     "page": "options.html"
   },
   "permissions": [
     "storage",
     "contextMenus",
     "activeTab",
+    "alarms",
     "https://api.github.com/*",
     "https://github.com/*",
     "https://jsbin-user-assets.s3.amazonaws.com/*",
     "https://jsbin-user-assets.s3.amazonaws.com/rafaelcastrocouto/password.ttf"
+  ],
+  "optional_permissions": [
+    "*://*/*"
   ]
 }
