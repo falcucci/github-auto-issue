@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "web-ext": "web-ext",
     "build": "webpack --watch --progress --mode=production",
-    "start": "web-ext run -s ./distribution/ --firefox='/Applications/Firefox Nightly.app/Contents/MacOS/firefox' --start-url https://github.com/users/falcucci/projects/5 --verbose",
+    "start": "web-ext run -s ./distribution/ --firefox='/Applications/Firefox Nightly.app/Contents/MacOS/firefox' --start-url https://github.com/falcucci/github-board-refined/issues/12 --verbose",
+    "watch": "run-p watch:* --continue-on-error",
+    "watch:webpack": "webpack --watch --progress --mode=production",
+    "watch:extension": "web-ext run -s ./distribution/ --firefox='/Applications/Firefox Nightly.app/Contents/MacOS/firefox' --start-url https://github.com/falcucci/github-board-refined/issues/12 --verbose",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -32,6 +36,7 @@
   "devDependencies": {
     "copy-webpack-plugin": "^11.0.0",
     "esbuild-loader": "^3.0.1",
+    "npm-run-all": "^4.1.5",
     "terser-webpack-plugin": "^5.3.6",
     "webextension-polyfill": "^0.10.0",
     "webpack": "^5.75.0",
