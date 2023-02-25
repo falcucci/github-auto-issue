@@ -9,7 +9,7 @@
     "start": "web-ext run -s ./distribution/ --firefox='/Applications/Firefox Nightly.app/Contents/MacOS/firefox' --start-url https://github.com/falcucci/github-board-refined/issues/12 --verbose",
     "watch": "run-p watch:* --continue-on-error",
     "watch:webpack": "webpack --watch --progress --mode=production",
-    "watch:extension": "web-ext run -s ./distribution/ --firefox='/Applications/Firefox Nightly.app/Contents/MacOS/firefox' --start-url https://github.com/falcucci/github-board-refined/issues/12 --verbose",
+    "watch:extension": "web-ext run -s ./distribution/ --firefox='/Applications/Firefox Nightly.app/Contents/MacOS/firefox' --start-url https://github.com/falcucci/github-board-refined/issues/12 --verbose --devtools",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -26,6 +26,7 @@
     "dom-chef": "^5.1.0",
     "dom-loaded": "^3.0.0",
     "element-ready": "^6.2.1",
+    "eventsource-parser": "^0.1.0",
     "select-dom": "^7.1.1",
     "selector-observer": "^2.1.6",
     "web-ext": "^7.5.0",
