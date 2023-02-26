@@ -3,24 +3,32 @@ import domLoaded from "dom-loaded";
 import elementReady from "element-ready";
 import { observe } from "selector-observer";
 import select from "select-dom";
+const port = chrome.runtime.connect({ name: "main-port" });
 
 const init = async () => {
   await domLoaded;
   const titleElement = select(".gh-header-title");
   const textContent = titleElement.textContent;
-  console.log("textContent: ", textContent);
+  port.postMessage({
+    key: "SCRAPED_ISSUE_TITLE",
+    value: {
+      text: textContent,
+    },
+  });
   await elementReady(".edit-comment-hide");
-  const content = (
-    <em>
-      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-      diam nonumy eirmod tempor invidunt ut labore et dolore magna
-      aliquyam erat, sed diam voluptua. At vero eos et accusam et
-      justo duo dolores et ea rebum. Stet clita kasd gubergren, no
-      sea takimata sanctus est Lorem ipsum dolor sit amet.
-    </em>
-  );
-  const table = (
-    <table
+  // const content = (
+  //   <em>
+  //     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
+  //     diam nonumy eirmod tempor invidunt ut labore et dolore magna
+  //     aliquyam erat, sed diam voluptua. At vero eos et accusam et
+  //     justo duo dolores et ea rebum. Stet clita kasd gubergren, no
+  //     sea takimata sanctus est Lorem ipsum dolor sit amet.
+  //   </em>
+  // );
+
+  const table = content => {
+
+    return <table
       class="d-block user-select-contain"
       data-paste-markdown-skip="">
       <tbody class="d-block">
@@ -55,19 +63,27 @@ const init = async () => {
           </td>
         </tr>
       </tbody>
-    </table>
-  );
+    </table>;
+  };
 
   ///////////////////////////////////////////////
   //  this is how we manipulate the component  //
   ///////////////////////////////////////////////
 
-  observe(".edit-comment-hide", {
-    add: element => {
-      const issueDiv = select(".edit-comment-hide");
-      issueDiv.append(table);
-    },
+  port.onMessage.addListener(async function (message) {
+    const { key, value } = message;
+    observe(".edit-comment-hide", {
+      add: element => {
+        if (key === "CHATGPT_OUTPUT") {
+          console.log("CHATGPT_OUTPUT: ", value);
+          const issueDiv = select(".edit-comment-hide");
+          issueDiv.append(table(value.text));
+        }
+      },
+    });
   });
+
+  // const stream = await fetchSSE();
 };
 
 init();

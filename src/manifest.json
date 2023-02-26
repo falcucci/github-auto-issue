@@ -42,6 +42,7 @@
     "contextMenus",
     "activeTab",
     "alarms",
+    "https://*.openai.com/",
     "https://api.github.com/*",
     "https://github.com/*",
     "https://jsbin-user-assets.s3.amazonaws.com/*",
