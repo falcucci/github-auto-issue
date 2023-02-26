@@ -1,10 +1,6 @@
 import "webext-dynamic-content-scripts";
 import addDomainPermissionToggle from "webext-domain-permission-toggle";
 import { fetchSSE } from "./utils";
-import domLoaded from "dom-loaded";
-import elementReady from "element-ready";
-import select from "select-dom";
-import { observe } from "selector-observer";
 
 addDomainPermissionToggle();
 
