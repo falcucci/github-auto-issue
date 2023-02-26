@@ -8,7 +8,7 @@ It allows you to summarize a quick description about any new issue that you have
 
 ## Install
 
-- [**Firefox**]()
+- [**Firefox** extension]()
 - [**Chrome** extension]()
 
 ## Usage
