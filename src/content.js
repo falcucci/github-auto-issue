@@ -9,6 +9,7 @@ const port = chrome.runtime.connect({ name: "main-port" });
 const button = () => {
   return (
     <span
+      id="summarize"
       class="rounded-3 color-bg-emphasis color-fg-on-emphasis f6 text-uppercase v-align-middle px-2 py-1 ml-3"
       style={{
         cursor: "pointer",
@@ -38,19 +39,29 @@ const init = async () => {
 
   console.log("issueDiv2: ", issueDiv2);
   issueDiv2.append(button());
-  await elementReady("#issue_title");
-  const titleElement = select("#issue_title");
-  console.log("titleElement: ", titleElement);
-  const textContent = titleElement.value;
-  await elementReady("#issue_body");
-  const issueBodyElement = select("#issue_body");
-  issueBodyElement.value = "";
-  port.postMessage({
-    key: "SCRAPED_ISSUE_TITLE",
-    value: {
-      text: textContent,
+
+  const handleClick = async () => {
+    await elementReady("#issue_title");
+    const titleElement = select("#issue_title");
+    console.log("titleElement: ", titleElement);
+    const textContent = titleElement.value;
+    await elementReady("#issue_body");
+    const issueBodyElement = select("#issue_body");
+    issueBodyElement.value = "";
+    port.postMessage({
+      key: "SCRAPED_ISSUE_TITLE",
+      value: {
+        text: textContent,
+      },
+    });
+  };
+
+  observe("#summarize", {
+    add: element => {
+      element.addEventListener("click", handleClick);
     },
   });
+
   await elementReady(".edit-comment-hide");
 
   const table = content => {
