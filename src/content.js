@@ -76,8 +76,8 @@ const init = async () => {
       add: element => {
         if (key === "CHATGPT_OUTPUT") {
           console.log("CHATGPT_OUTPUT: ", value);
-          const issueDiv = select(".edit-comment-hide");
-          issueDiv.append(table(value.text));
+          const issueDiv = select(".edit-comment-hide .color-fg-muted");
+          issueDiv.textContent = issueDiv.textContent + value.text;
         }
       },
     });
