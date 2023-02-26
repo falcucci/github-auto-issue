@@ -13,10 +13,7 @@ It allows you to summarize a quick description about any new issue that you have
 
 ## Usage
 
-First, you need to change into the example subdirectory and install all
-[NodeJS][nodejs] dependencies with [npm](http://npmjs.com/) or
-[yarn](https://yarnpkg.com/):
-
+First, you need to change into the example subdirectory and install all dependencies with [npm](http://npmjs.com/):
 
 ```bash
 npm install
