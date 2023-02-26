@@ -9,6 +9,8 @@ const init = async () => {
   await domLoaded;
   const titleElement = select(".gh-header-title");
   const textContent = titleElement.textContent;
+  const issueDiv = select(".edit-comment-hide .color-fg-muted");
+  issueDiv.textContent = '';
   port.postMessage({
     key: "SCRAPED_ISSUE_TITLE",
     value: {
@@ -75,7 +77,6 @@ const init = async () => {
     observe(".edit-comment-hide", {
       add: element => {
         if (key === "CHATGPT_OUTPUT") {
-          console.log("CHATGPT_OUTPUT: ", value);
           const issueDiv = select(".edit-comment-hide .color-fg-muted");
           issueDiv.textContent = issueDiv.textContent + value.text;
         }
