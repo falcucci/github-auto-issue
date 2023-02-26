@@ -23,7 +23,6 @@ const button = () => {
 const init = async () => {
   await domLoaded;
   const options = await optionsStorage.getAll();
-  console.log("options: ", options);
 
   //////////////////////////////////////////
   //  adding the button to interact with  //
@@ -39,9 +38,11 @@ const init = async () => {
 
   console.log("issueDiv2: ", issueDiv2);
   issueDiv2.append(button());
+  await elementReady("#issue_title");
   const titleElement = select("#issue_title");
   console.log("titleElement: ", titleElement);
   const textContent = titleElement.value;
+  await elementReady("#issue_body");
   const issueBodyElement = select("#issue_body");
   issueBodyElement.value = "";
   port.postMessage({

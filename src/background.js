@@ -16,7 +16,7 @@ chrome.runtime.onConnect.addListener(function (port) {
     const { key, value } = message;
     // refractor this to use a function
     if (key === "SCRAPED_ISSUE_TITLE") {
-      const stream = await fetchSSE({
+      await fetchSSE({
         body: value.text,
         onMessage: message => {
           if (message === "[DONE]") {
