@@ -1,10 +1,6 @@
-import {
-  createParser,
-  ParsedEvent,
-  ReconnectInterval,
-} from "eventsource-parser";
+import { createParser } from "eventsource-parser";
 
-import optionsStorage from '../options-storage'
+import optionsStorage from "../options-storage";
 
 export async function fetchSSE(options) {
   const { onMessage, body } = options;
@@ -12,8 +8,7 @@ export async function fetchSSE(options) {
   let counter = 0;
   const encoder = new TextEncoder();
   const decoder = new TextDecoder();
-  const prompt =
-    `I will give you an issue title and I want you to describe it in two paragraphs with blank lines between them in a consistent and technical way without repeat yourself: \n${body}`;
+  const prompt = `I will give you an issue title and I want you to describe it in two paragraphs with blank lines between them in a consistent and technical way without repeat yourself: \n${body}`;
 
   const payload = {
     model: "text-davinci-003",
@@ -81,26 +76,3 @@ export async function fetchSSE(options) {
 
   return stream;
 }
-
-const init = async () => {
-  await domLoaded;
-  await elementReady(".edit-comment-hide");
-  observe(".edit-comment-hide", {
-    add: element => {
-      element.append("text");
-      const issueDiv = select(".edit-comment-hide");
-      issueDiv.append("text");
-    },
-  });
-
-  const stream = await fetchSSE();
-  const reader = stream.getReader();
-  const decoder = new TextDecoder();
-  const { value, done } = await reader.read();
-  if (done) {
-    console.log("Stream complete");
-    return;
-  }
-  const chunkValue = decoder.decode(value);
-  console.log(chunkValue);
-};

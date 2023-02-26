@@ -33,12 +33,3 @@ chrome.runtime.onConnect.addListener(function (port) {
     }
   });
 });
-
-/* Define defaults */
-// new OptionsSync().define({
-// 	defaults: {
-// 		personalToken: '',
-// 		logging: false
-// 	},
-// });
-//

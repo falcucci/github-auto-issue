@@ -25,14 +25,11 @@ const button = () => {
 
 const init = async () => {
   await domLoaded;
-  observe(sucessBtnPath, {
-    add: element => {
-      const buttonReady = select("#summarize");
-      if (!buttonReady) {
-        element.append(button())
-      }
-    }
-  })
+  const buttonReady = select("#summarize");
+  const anchor = select(sucessBtnPath);
+  if (!buttonReady && anchor) {
+    anchor.append(button())
+  }
 
   const handleClick = async () => {
     await elementReady("#issue_title");
