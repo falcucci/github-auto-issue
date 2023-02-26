@@ -52,10 +52,6 @@ const init = async () => {
     },
   });
 
-  ///////////////////////////////////////////////
-  //  this is how we manipulate the component  //
-  ///////////////////////////////////////////////
-
   port.onMessage.addListener(async function (message) {
     const { key, value } = message;
     observe("#issue_body", {
