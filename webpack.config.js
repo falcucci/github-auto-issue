@@ -6,7 +6,7 @@ const webpack = require("webpack");
 
 module.exports = {
   entry: Object.fromEntries(
-    ["background", "content", "options"].map(name => [
+    ["background", "content", "options", "options-storage"].map(name => [
       name,
       `./${name}`,
     ])

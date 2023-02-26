@@ -1,35 +1,39 @@
 <!doctype html>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-<title>Github Auto Isuse  options</title>
-<link rel="stylesheet" href="options.css">
-<form id="options-form" class="detail-view-container">
-	<details id="info" open>
-		<summary><strong>Information</strong></summary>
-    <p>
-			Follow or sponsor <a href="https://github.com/sponsors/falcucci">@falcucci</a> if github-auto-issue helps you work more efficiently.
-		</p>
-	</details>
+<title>Github Project Board options</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+<body>
+  <div class="container">
 
-	<details id="token">
-		<summary><strong>🔑 Personal token</strong></summary>
-		<p>
-			Mandatory, paste your token or <a id="personal-token-link" href="https://platform.openai.com/account/api-keys">generate one</a><br>
-			<!-- placeholder is set to enable use of :placeholder-shown CSS selector -->
-			<input type="text" name="personalToken" pattern="[\da-f]{40}|ghp_\w{36,251}" placeholder=" " spellcheck="false" autocomplete="off" autocapitalize="off">
-			<span id="validation"></span>
-		</p>
-		<ul>
-			<li data-validation data-scope="valid_token">The token enables us to consume the AI services <strong> without saving it in a server</strong>, meaning that the token you are sharing here <strong>totally safe</strong>.
-		</ul>
-	</details>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 ">
+        <form role="form" id="options-form">
+          <h2>Github Auto Issue 💜 <small>Improving your workflow experience.</small></h2>
+          <hr class="colorgraph">
+          <div class="row">
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group">
+                <input type="text" name="personalToken" class="form-control input-lg key">
+              </div>
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6">
+              <div class="form-group">
+                <input type="submit" value="Save" name="submit" class="btn btn&#45;success btn&#45;block btn&#45;lg">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+              By clicking <strong class="label label-primary">Save</strong>, your token would be saved locally and sync automatically by the browser. Please, create a token with read/write permission from <a target="__blank" href="https://github.com/settings/tokens/new?description=Github Board Project Refined">here</a> for high rate API calls and private repos.
+            </div>
+          </div>
+          <br />
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="options.js"></script>
 
-	<details id="debugging">
-		<summary><strong>Debugging</strong></summary>
-		<p>
-			<button id="clear-cache">Clear cache</button>
-		</p>
 
-	</details>
-</form>
-<script src="options.js"></script>
+
+

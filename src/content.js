@@ -2,11 +2,14 @@ import React from "dom-chef";
 import domLoaded from "dom-loaded";
 import elementReady from "element-ready";
 import { observe } from "selector-observer";
+import optionsStorage from './options-storage.js'
 import select from "select-dom";
 const port = chrome.runtime.connect({ name: "main-port" });
 
 const init = async () => {
   await domLoaded;
+  const options = await optionsStorage.getAll()
+  console.log('options: ', options);
   const titleElement = select(".gh-header-title");
   const textContent = titleElement.textContent;
   const issueDiv = select(".edit-comment-hide .color-fg-muted");
@@ -18,15 +21,6 @@ const init = async () => {
     },
   });
   await elementReady(".edit-comment-hide");
-  // const content = (
-  //   <em>
-  //     Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed
-  //     diam nonumy eirmod tempor invidunt ut labore et dolore magna
-  //     aliquyam erat, sed diam voluptua. At vero eos et accusam et
-  //     justo duo dolores et ea rebum. Stet clita kasd gubergren, no
-  //     sea takimata sanctus est Lorem ipsum dolor sit amet.
-  //   </em>
-  // );
 
   const table = content => {
 
@@ -83,6 +77,7 @@ const init = async () => {
       },
     });
   });
+
 
   // const stream = await fetchSSE();
 };
