@@ -2,9 +2,11 @@ import React from "dom-chef";
 import domLoaded from "dom-loaded";
 import elementReady from "element-ready";
 import { observe } from "selector-observer";
-import optionsStorage from "./options-storage.js";
 import select from "select-dom";
 const port = chrome.runtime.connect({ name: "main-port" });
+
+const sucessBtnPath =
+  "html body.logged-in.env-production.page-responsive div.logged-in.env-production.page-responsive div.application-main div main#js-repo-pjax-container turbo-frame#repo-content-turbo-frame div#repo-content-pjax-container.repository-content div.clearfix.new-discussion-timeline.js-check-all-container.container-xl.px-3.px-md-4.px-lg-5.mt-4 form#new_issue.new_issue div div.Layout.Layout--flowRow-until-md.Layout--sidebarPosition-end.Layout--sidebarPosition-flowRow-end.Layout--sidebar-narrow div.Layout-main div.timeline-comment-wrapper.timeline-new-comment.composer.composer-responsive div.timeline-comment.color-bg-default.hx_comment-box--tip div.js-slash-command-surface div.flex-items-center.flex-justify-end.d-none.d-md-flex.mx-2.mb-2.px-0 div.d-flex.flex-items-center.flex-auto";
 
 const button = () => {
   return (
@@ -23,22 +25,12 @@ const button = () => {
 
 const init = async () => {
   await domLoaded;
-  const options = await optionsStorage.getAll();
-
-  //////////////////////////////////////////
-  //  adding the button to interact with  //
-  //////////////////////////////////////////
-
-  await elementReady(
-    "html body.logged-in.env-production.page-responsive div.logged-in.env-production.page-responsive div.application-main div main#js-repo-pjax-container turbo-frame#repo-content-turbo-frame div#repo-content-pjax-container.repository-content div.clearfix.new-discussion-timeline.js-check-all-container.container-xl.px-3.px-md-4.px-lg-5.mt-4 form#new_issue.new_issue div div.Layout.Layout--flowRow-until-md.Layout--sidebarPosition-end.Layout--sidebarPosition-flowRow-end.Layout--sidebar-narrow div.Layout-main div.timeline-comment-wrapper.timeline-new-comment.composer.composer-responsive div.timeline-comment.color-bg-default.hx_comment-box--tip div.js-slash-command-surface div.flex-items-center.flex-justify-end.d-none.d-md-flex.mx-2.mb-2.px-0 div.d-flex.flex-items-center.flex-auto"
-  );
-
-  const issueDiv2 = select(
-    "html body.logged-in.env-production.page-responsive div.logged-in.env-production.page-responsive div.application-main div main#js-repo-pjax-container turbo-frame#repo-content-turbo-frame div#repo-content-pjax-container.repository-content div.clearfix.new-discussion-timeline.js-check-all-container.container-xl.px-3.px-md-4.px-lg-5.mt-4 form#new_issue.new_issue div div.Layout.Layout--flowRow-until-md.Layout--sidebarPosition-end.Layout--sidebarPosition-flowRow-end.Layout--sidebar-narrow div.Layout-main div.timeline-comment-wrapper.timeline-new-comment.composer.composer-responsive div.timeline-comment.color-bg-default.hx_comment-box--tip div.js-slash-command-surface div.flex-items-center.flex-justify-end.d-none.d-md-flex.mx-2.mb-2.px-0 div.d-flex.flex-items-center.flex-auto"
-  );
-
-  console.log("issueDiv2: ", issueDiv2);
-  issueDiv2.append(button());
+  const buttonReady = await elementReady("#summarize");
+  if (!buttonReady) {
+    await elementReady(sucessBtnPath);
+    const successBtn = select(sucessBtnPath);
+    successBtn.append(button());
+  }
 
   const handleClick = async () => {
     await elementReady("#issue_title");
