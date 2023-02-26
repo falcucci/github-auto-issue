@@ -1,0 +1,37 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<title>Github Auto Isuse  options</title>
+<link rel="stylesheet" href="options.css">
+<form id="options-form" class="detail-view-container">
+	<details id="info" open>
+		<summary><strong>Information</strong></summary>
+    <p>
+			Follow or sponsor <a href="https://github.com/sponsors/falcucci">@falcucci</a> if github-auto-issue helps you work more efficiently.
+		</p>
+	</details>
+
+	<details id="token">
+		<summary><strong>🔑 Personal token</strong></summary>
+		<p>
+			Mandatory, paste your token or <a id="personal-token-link" href="https://platform.openai.com/account/api-keys">generate one</a><br>
+			<!-- placeholder is set to enable use of :placeholder-shown CSS selector -->
+			<input type="text" name="personalToken" pattern="[\da-f]{40}|ghp_\w{36,251}" placeholder=" " spellcheck="false" autocomplete="off" autocapitalize="off">
+			<span id="validation"></span>
+		</p>
+		<ul>
+			<li data-validation data-scope="valid_token">The token enables us to consume the AI services <strong> without saving it in a server</strong>, meaning that the token you are sharing here <strong>totally safe.</strong>.
+		</ul>
+	</details>
+
+	<details id="debugging">
+		<summary><strong>Debugging</strong></summary>
+		<p>
+			<button id="clear-cache">Clear cache</button>
+		</p>
+
+	</details>
+
+
+</form>
+<script src="options.js"></script>
