@@ -4,7 +4,7 @@ import optionsStorage from "../options-storage";
 
 export async function fetchSSE(options) {
   const { onMessage, body } = options;
-  const { personalToken: token } = await optionsStorage.getAll();
+  const { personalToken } = await optionsStorage.getAll();
   let counter = 0;
   const encoder = new TextEncoder();
   const decoder = new TextDecoder();
@@ -21,8 +21,6 @@ export async function fetchSSE(options) {
     stream: true,
     n: 1,
   };
-
-  const personalToken = token;
 
   const res = await fetch(
     "https://api.openai.com/v1/completions",
