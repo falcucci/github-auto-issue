@@ -12,11 +12,11 @@ export async function fetchSSE(options) {
   const payload = {
     model: "text-davinci-003",
     prompt,
-    temperature: 0.5,
+    temperature: 1,
     top_p: 1,
     frequency_penalty: 0,
     presence_penalty: 0,
-    max_tokens: 200,
+    max_tokens: 4000,
     stream: true,
     n: 1,
   };
