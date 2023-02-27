@@ -6,6 +6,8 @@ It allows you to summarize a quick description about any new issue that you have
 
 ![auto-issue](https://user-images.githubusercontent.com/33763843/221444329-fee84a8e-64a8-4f4a-84c6-566fe7a8de77.gif)
 
+![autoissue5](https://user-images.githubusercontent.com/33763843/221567695-9ccc071a-fbf4-4e9a-99b4-df71c777caec.gif)
+
 ## Install
 
 - [**Firefox** extension]()
