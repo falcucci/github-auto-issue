@@ -5,7 +5,6 @@ import optionsStorage from "../options-storage";
 export async function fetchSSE(options) {
   const { onMessage, body } = options;
   const { personalToken } = await optionsStorage.getAll();
-  let counter = 0;
   const encoder = new TextEncoder();
   const decoder = new TextDecoder();
   const prompt = `I will give you an issue title and I want you to describe it in two paragraphs with blank lines between them in a consistent and technical way without repeat yourself: \n${body}`;
@@ -34,6 +33,7 @@ export async function fetchSSE(options) {
     }
   );
 
+  let counter = 0;
   const stream = new ReadableStream({
     async start(controller) {
       // callback
